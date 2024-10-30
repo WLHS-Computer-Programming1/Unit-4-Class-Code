@@ -83,8 +83,9 @@ if answer.lower() == "a":
     # Handle user input
     if user_input is not None:
         if user_input == "asd":
-            print("You escaped!")
+            print("You escaped! you run to the nearest door you can find.")
             sleep(2)
+          
         else:
             print("You died.")
     else:
