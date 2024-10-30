@@ -25,7 +25,8 @@ while True:
     elif user_guess == magic_number:
         print("You got it!")
         break
-    elif try_count == 7:
+
+    if try_count == 7:
         print(f"Try again! The magic number was {magic_number}")
         break
 
