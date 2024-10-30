@@ -1,3 +1,6 @@
+import time
+import threading
+import queue
 from time import sleep
 
 
@@ -44,16 +47,59 @@ if answer.lower() == "a":
     sleep(2)
     print("a zombie behind the couch notices you")
     sleep(1)
-    print("The zombie darts at you and bites into your body")
-    print(youdied)
-    exit()
+    print("The zombie is about to attack you")
+    sleep(1)
+
+    def get_input(q):
+        user_input = input("Type 'asd' to get to the bedroom: ")
+        q.put(user_input)  # Put the input into the queue
+
+
+    input_queue = queue.Queue()
+
+    # Start the input thread
+    input_thread = threading.Thread(target=get_input, args=(input_queue,))
+    input_thread.start()
+
+    # Wait for 5 seconds, providing countdown
+    for i in range(5, 0, -1):
+        print(f"{i} seconds remaining")
+        time.sleep(1)
+
+    # Check if the input thread is still alive
+    if input_thread.is_alive():
+        print("Time's up! Stopped.")
+        # Attempt to terminate the input thread
+        input_thread.join(timeout=0)  # This will ensure the main thread continues without waiting
+
+    # Check if we got any input
+    user_input = None  # Initialize user_input
+    if not input_queue.empty():
+        user_input = input_queue.get()  # Retrieve input from the queue
+        print(f"You entered: {user_input}")
+    else:
+        print("No input received.")
+
+    # Handle user input
+    if user_input is not None:
+        if user_input == "asd":
+            print("You escaped!")
+            sleep(2)
+        else:
+            print("You died.")
+    else:
+        print("You died, no input received.")
+
+
 elif answer.lower() == "b":
     print("nothing happens")
     sleep(2)
     print("you look around to see the zombie behind the couch that you are sleeping on")
     sleep(2)
     print("you move quietly to the bedroom")
-sleep(2)
+    sleep(2)
+
+
 print(" ")
 print("You are in the bedroom, you see a computer and you see a window, ")
 sleep(2)

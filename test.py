@@ -46,6 +46,5 @@ if user_input is not None:
 else:
     print("You died, no input received.")
 
-# Terminate the program
-exit()
+
 
