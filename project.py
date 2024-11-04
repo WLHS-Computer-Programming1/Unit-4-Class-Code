@@ -13,8 +13,10 @@ youdied = r"""
 <   |  |/  _ \|  |  \  / __ | |  |/ __ \ / __ |          
  \___  (  <_> )  |  / / /_/ | |  \  ___// /_/ |          
  / ____|\____/|____/  \____ | |__|\___  >____ |          
- \/                        \/         \/     \/          
-                                                         
+ \/                        \/         \/     \/    
+
+ """
+gameover = r"""                                                       
    _________    _____   ____     _______  __ ___________ 
   / ___\__  \  /     \_/ __ \   /  _ \  \/ // __ \_  __ \
  / /_/  > __ \|  Y Y  \  ___/  (  <_> )   /\  ___/|  | \/
@@ -51,7 +53,7 @@ if answer.lower() == "a":
     sleep(1)
 
     def get_input(q):
-        user_input = input("Type 'asd' to get to the bedroom: ")
+        user_input = input("Type \"asd\" quickly to get to the bedroom: ")
         q.put(user_input)  # Put the input into the queue
 
 
@@ -87,9 +89,14 @@ if answer.lower() == "a":
             sleep(2)
           
         else:
-            print("You died.")
+          print(youdied)
+          sleep(2)
+          print(gameover)
+            
     else:
-        print("You died, no input received.")
+      print(youdied)
+      sleep(2)
+      print(gameover)
 
 
 elif answer.lower() == "b":
