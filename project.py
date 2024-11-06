@@ -4,7 +4,14 @@ import queue
 from time import sleep
 
 
-character_name = input("what is your name survivor: ")
+
+
+def death():
+    sleep(1)
+    print(youdied)
+    sleep(1)
+    print(gameover)
+    exit()
 
 youdied = r"""
 
@@ -24,6 +31,7 @@ gameover = r"""
 /_____/     \/      \/     \/                   \/       
 
 """
+
 city = r"""
          /\ \ \ \/_______/     ______/\      \  /\ \/ /\ \/ /\  \_____________
         /\ \ \ \/______ /     /\    /:\\      \ ::\  /::\  /::\ /____  ____ __
@@ -76,6 +84,10 @@ __________\     \               //\::/\:/___  ___ /       /::\ \:\ \::/\:\ \:\
 """
 
 
+#______________________________________________________________________________________________________________________________
+
+
+character_name = input("what is your name survivor: ")
 print(city)
 sleep(5)
 print("You wake up in a apartment on a couch, you dont know whats going on...")
@@ -96,8 +108,7 @@ print(" ")
 
 answer = input("What do you choose")
 
-
-#1st choice
+#1st choice - you die or survive
 if answer.lower() == "a":
     print(f"{character_name}, you chose poorly... ")
     sleep(2)
@@ -137,22 +148,20 @@ if answer.lower() == "a":
         print("No input received.")
 
     # Handle user input
+
     if user_input is not None:
         if user_input == "asd":
             print("You escaped! you run to the nearest door you can find.")
             sleep(2)
-          
+
         else:
-          print(youdied)
-          sleep(2)
-          print(gameover)
-            
+            print(f"You Chose poorly {character_name}")
+            death()
     else:
-      print(youdied)
-      sleep(2)
-      print(gameover)
+        print(f"You Chose poorly {character_name}")
+        death()
 
-
+#you live
 elif answer.lower() == "b":
     print("nothing happens")
     sleep(2)
@@ -160,7 +169,6 @@ elif answer.lower() == "b":
     sleep(2)
     print("you move quietly to the bedroom")
     sleep(2)
-
 
 print(" ")
 print("You are in the bedroom, you see a computer and you see a window, ")
@@ -184,14 +192,42 @@ if answer.lower() == "a":
     print(f"{character_name}, you chose poorly... ")
     sleep(2)
     print("you look out and a zombie breaks through the window and bites off your face")
-    sleep(1)
-    print(youdied)
+    death()
 
-#elif answer.lower() == "b":
-#- you figure out you are in Louisiana, Texas.
-#You also find a program connected to cameras outside the house,
-#you find the zombie that was waiting outside of the window on the cameras.
-#You look for the closest thing but there appears to be 2 weapons,
+if answer.lower() == "b":
+    print("you go to check the computer")
+    sleep(2)
+
+
+print("You figure out you are in st louis, missouri.")
+sleep(2)
+print("You also find a program connected to cameras outside the house,")
+sleep(2)
+print("You find the zombie that was waiting outside of the window on the cameras.")
+sleep(2)
+print("You look for the closest thing but there only appears to be 2 weapons,")
+sleep(2)
+print("There is a...")
+sleep(1)
+print(" ")
+
+print("A - a swiss knife -")
+print(" ")
+sleep(1)
+print("or")
+print(" ")
+sleep(1)
+print("B - a pistol -")
+
+answer = input("What do you choose")
+print(" ")
+
+if answer.lower() == "a":
+    print("you remember your axe throwing skills back in the day and decide to put them to use")
+    sleep(2)
+    print("You kill the zombie with a hard throw with exceptionally accurate aim.")
+
+#you aim and shoot at the zombie, you kill it but you attract hundreds more, they all storm the house and eat you
 
 
 
